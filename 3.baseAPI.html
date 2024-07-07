@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>API</h1>
+
+    <p>La sintaxis es siempre igual. Si queremos consultar otra API sólo debemos cambiar el nombre de la función por uno que sea coherente con dicha API y el End Point (URL) </p>
+
+</body>
+<script>
+    
+   async function getRandomUser(){
+
+        const res = await fetch("https://randomuser.me/api")
+        const data = await res.json()
+        console.log(data);
+        
+    }
+
+    getRandomUser()
+
+</script>
+</html>

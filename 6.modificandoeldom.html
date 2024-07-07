@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="user"></div>
+    <div id="name"></div>
+    
+</body>
+<script>
+
+    // async function getRandomUser(){
+    //     const res = await fetch("https://randomuser.me/api")
+    //     const data = await res.json()
+    //     console.log(data);
+    //     const element = document.querySelector(".user")
+    //     element.innerHTML = data.results[0]['email']
+    // }
+
+    // getRandomUser()
+
+
+    //----------------- La función de arriba y la de abajo permiten hacer lo mismo -----------
+
+    const renderUser = (data)=> {
+    const name = document.querySelector("#name")
+    name.innerHTML = `${data.name.first} ${data.name.last}`
+        }
+
+    const getRandomUser = async() => {
+    const res = await fetch("https://randomuser.me/api")
+    const data = await res.json()
+    console.log(data.results)
+
+    renderUser(data.results[0])
+    }
+
+    getRandomUser()
+
+</script>
+</html>

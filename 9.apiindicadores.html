@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Monedas</title>
+</head>
+<body>
+    <h1>Conversor de Monedas</h1>
+    <label for="monto">Monto en Pesos Chilenos (CLP):</label>
+    <input type="number" id="monto" placeholder="Ingrese monto en CLP">
+
+    <label for="moneda">Convertir a:</label>
+    <select id="moneda">
+        <option value="usd">Dólar (USD)</option>
+        <option value="eur">Euro (EUR)</option>
+        <option value="uf">Unidad de Fomento (UF)</option>
+    </select>
+
+    <button id="convertir">Convertir</button>
+
+    <h2>Resultados</h2>
+    <div id="resultados">
+        <div id="UF"></div>
+        <div id="DolarO"></div>
+        <div id="DolarA"></div>
+        <div id="Euro"></div>
+        <div id="IPC"></div>
+        <div id="UTM"></div>
+        <div id="IVP"></div>
+        <div id="Imacec"></div>
+    </div>
+
+
+</body>
+
+<script>
+
+async function getValores(){
+        const res = await fetch("https://mindicador.cl/api/")
+        const data = await res.json()
+
+   fetch('https://mindicador.cl/api').then(function(response) {
+   return response.json();
+}).then(function(dailyIndicators) {
+  document.getElementById("UF").innerHTML = 'El valor actual de la UF es $' + dailyIndicators.uf.valor;
+  document.getElementById("DolarO").innerHTML = 'El valor actual del Dólar observado es $' + dailyIndicators.dolar.valor;
+  document.getElementById("DolarA").innerHTML = 'El valor actual del Dólar acuerdo es $' + dailyIndicators.dolar_intercambio.valor;
+  document.getElementById("Euro").innerHTML = 'El valor actual del Euro es $' + dailyIndicators.euro.valor;
+  document.getElementById("IPC").innerHTML = 'El valor actual del IPC es ' + dailyIndicators.ipc.valor + '%';
+  document.getElementById("UTM").innerHTML = 'El valor actual de la UTM es $' + dailyIndicators.utm.valor;
+  document.getElementById("IVP").innerHTML = 'El valor actual del IVP es $' + dailyIndicators.ivp.valor;
+  document.getElementById("Imacec").innerHTML = 'El valor actual del Imacec es ' + dailyIndicators.imacec.valor + '%';
+}).catch(function(error) {
+  console.log('Requestfailed', error);
+});
+
+    }
+
+    getValores()
+
+
+// hay que crear otra función para generar el gráfico
+// en la guía revisar el capítulo Plugins de JavaScript
+
+// mostrar cómo se hace lo del archivo .json 
+
+</script>
+</html>

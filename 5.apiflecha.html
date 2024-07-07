@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // también podemos escribir la misma función en formato función flecha
+     //  const res = await fetch("https://randomuser.me/api/results=5")
+        // Esta API me dice cómo tengo que usarla.
+        // la constante res es donde almacenamos la respuesta a la consulta
+        // fetch hace un request al endpoint
+           // res.json() transforma los resultados para que podamos leerlos fácilmente como un objeto de JavaScript
+
+const getRandomUser = async()=> {
+
+    try{
+         const res = await fetch("https://randomuser.me/api")
+        const data = await res.json()
+        console.log(data);
+    }catch{
+        console.log("erro")
+    }
+}
+
+getRandomUser()
+
+</script>
+</html>

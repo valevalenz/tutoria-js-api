@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+      <h2>Sentencia Try y Catch</h2>
+      <p>Manejo de Errores</p>
+      <div id="name"></div>
+    <!-- Diapo 16 -->
+    <!-- Try envuelve el código y si ocurre un error se transfiere al bloque catch -->
+
+    </body>
+
+    <script>
+         async function getRandomUser(){
+
+        try{
+        const res = await fetch("https://randomuer.me/api")
+
+        // await fetch("https://pokeapi.co/")
+       
+        const data = await res.json()
+   
+        console.log(data);
+      
+      } catch(error){
+  
+        const usuario = document.querySelector("#name")
+        usuario.innerHTML = "Ha ocurrido un error"
+      }
+    }
+
+    getRandomUser()
+   
+    </script>
+</html>

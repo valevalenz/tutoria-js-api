@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAP</title>
+</head>
+<body>
+    <h2>map()</h2>
+    <p>En JavaScript, .map() es un método que pertenece a los arrays. Este método se utiliza principalmente para iterar sobre todos los elementos de un array y aplicar una función a cada uno de ellos, devolviendo un nuevo array con los resultados de aplicar dicha función a cada elemento.</p>
+
+    <p id="numeros"></p>
+
+</body>
+<script>
+//     sintaxis básica
+
+//     const newArray = array.map(function(currentValue, index, array) {
+//     // código a ejecutar en cada elemento
+// }, thisArg);
+
+
+    const numeros = [1, 2, 3, 4, 5];
+
+    const multiplicados = numeros.map(function(num) {
+    return num * 2;
+});
+
+console.log(multiplicados);
+
+const renderNumeros = (data) => {
+  
+    const element = document.querySelector("#numeros");
+
+    let html = "";
+    data.forEach(function(num) {
+        html += `${num}`;
+    });
+
+    element.innerHTML = html;
+};
+
+renderNumeros(multiplicados);
+
+</script>
+</html>
